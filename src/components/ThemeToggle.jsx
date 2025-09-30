@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {cn} from "@/lib/utils.js";
 
 export const ThemeToggle = () => {
-    const [isDardMode, setIsDardMode] = useState(false);
+    const [isDardMode, setIsDardMode] = useState(true);
 
     useEffect(() => {
         const storedTheme = localStorage.getItem("theme")
