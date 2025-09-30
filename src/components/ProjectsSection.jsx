@@ -26,8 +26,8 @@ const projects = [
         title: "Digital Solutions Platform",
         description:
             "Responsive landing page featuring digital services with streamlined navigation and modern interface.",
-        image: "/projects/project3.png",
-        tags: ["React", "PHP Laravel", "Stripe"],
+        image: "/projects/proj1.png",
+        tags: ["React", "PHP Laravel", "MySQL"],
         demoUrl: "#",
         githubUrl: "",
     },
@@ -50,6 +50,16 @@ const projects = [
         tags: ["React", "Node.js", "Stripe"],
         demoUrl: "#",
         githubUrl: "#",
+    },
+    {
+        id: 6,
+        title: "Charity Foundation Website",
+        description:
+            "Full-featured charity platform with donations and payment processing.",
+        image: "/projects/projG.png",
+        tags: ["React", "Laravel", "Stripe"],
+        demoUrl: "#",
+        githubUrl: "https://github.com/CallMeTwist/ben-nnam-foundation",
     },
 ];
 
@@ -83,8 +93,8 @@ export const ProjectsSection = () => {
 
                             <div className="p-6">
                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.tags.map((tag) => (
-                                        <span className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
+                                    {project.tags.map((tag, key) => (
+                                        <span key={key} className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
                       {tag}
                     </span>
                                     ))}

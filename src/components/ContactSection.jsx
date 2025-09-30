@@ -12,6 +12,30 @@ import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 
+const contactDetails = [
+    {
+        id: 1,
+        icon: Mail,
+        title: "Email",
+        value: "sukaxavier@gmail.com",
+        link: "mailto:sukaxavier@gmail.com",
+    },
+    {
+        id: 2,
+        icon: Phone,
+        title: "WhatsApp",
+        value: "+2347064412910",
+        link: "https://wa.me/2347064412910?text=Hello%2C%20I%20would%20like%20to%20make%20an%20enquiry",
+    },
+    {
+        id: 3,
+        icon: MapPin,
+        title: "Location",
+        value: "Somewhere On Earth",
+        link: null, // no link needed
+    },
+];
+
 export const ContactSection = () => {
     const { toast } = useToast();
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,45 +73,28 @@ export const ContactSection = () => {
                         </h3>
 
                         <div className="space-y-6 justify-center">
-                            <div className="flex items-start space-x-4">
-                                <div className="p-3 rounded-full bg-primary/10">
-                                    <Mail className="h-6 w-6 text-primary" />{" "}
+                            {contactDetails.map((item) => (
+                                <div key={item.id} className="flex items-start space-x-4">
+                                    <div className="p-3 rounded-full bg-primary/10">
+                                        <item.icon className="h-6 w-6 text-primary" />{" "}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-medium"> {item.title}</h4>
+                                        {item.link ? (
+                                            <a
+                                                href={item.link}
+                                                className="text-muted-foreground hover:text-primary transition-colors"
+                                            >
+                                                {item.value}
+                                            </a>
+                                        ) : (
+                                            <p className="text-muted-foreground">{item.value}</p>
+                                            )}
+
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="font-medium"> Email</h4>
-                                    <a
-                                        href="mailto:sukaxavier@gmail.com"
-                                        className="text-muted-foreground hover:text-primary transition-colors"
-                                    >
-                                        sukaxavier@gmail.com
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="flex items-start space-x-4">
-                                <div className="p-3 rounded-full bg-primary/10">
-                                    <Phone className="h-6 w-6 text-primary" />{" "}
-                                </div>
-                                <div>
-                                    <h4 className="font-medium"> Phone</h4>
-                                    <a
-                                        href="tel:+2347064412910"
-                                        className="text-muted-foreground hover:text-primary transition-colors"
-                                    >
-                                        +2347064412910
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="flex items-start space-x-4">
-                                <div className="p-3 rounded-full bg-primary/10">
-                                    <MapPin className="h-6 w-6 text-primary" />{" "}
-                                </div>
-                                <div>
-                                    <h4 className="font-medium"> Location</h4>
-                                    <a className="text-muted-foreground hover:text-primary transition-colors">
-                                        Somewhere on Earth
-                                    </a>
-                                </div>
-                            </div>
+                            ))}
+
                         </div>
 
                         <div className="pt-8">
